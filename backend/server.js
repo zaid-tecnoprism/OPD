@@ -31,16 +31,19 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const FRONTEND_URL_RAW = process.env.FRONTEND_URL || 'https://opd-lsx7.onrender.com';
 
+const normalizeOrigin = (s) => s.trim().replace(/\/+$/, '');
+
 const allowedOrigins = Array.from(new Set([
-  ...FRONTEND_URL_RAW.split(',').map(s => s.trim()).filter(Boolean),
+  ...FRONTEND_URL_RAW.split(',').map(normalizeOrigin).filter(Boolean),
   'https://opd-lsx7.onrender.com',
+  'http://localhost:5173',
   'http://127.0.0.1:5173',
   'https://localhost:5173'
 ]));
 
 app.use(cors({
   origin: (origin, cb) => {
-    if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+    if (!origin || allowedOrigins.includes(normalizeOrigin(origin)) || process.env.NODE_ENV !== 'production') {
       cb(null, true);
     } else {
       cb(new Error(`CORS blocked: ${origin}. Add to FRONTEND_URL env var (comma-separated).`));

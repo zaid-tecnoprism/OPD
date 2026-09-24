@@ -13,7 +13,22 @@ services:
       - key: HOSPITAL_NAME
         value: "City General Hospital"
       - key: FRONTEND_URL
-        sync: false
-        description: "Comma-separated list of your frontend URLs, e.g. https://opd-demo.netlify.app,https://opd-demo.vercel.app"
+        value: https://opd-lsx7.onrender.com
+    plan: free
+    autoDeploy: yes
+
+  # Frontend static site (Blueprint). The backend URL below must match
+  # your backend service's onrender.com URL. IMPORTANT: VITE_API_BASE_URL
+  # must end with /api and any change requires a rebuild/redeploy,
+  # because Vite bakes VITE_* vars into the JS bundle at BUILD time.
+  - type: web
+    name: opd-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install --no-audit --no-fund && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://out-patient-departmnet.onrender.com/api
     plan: free
     autoDeploy: yes
