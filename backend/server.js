@@ -114,7 +114,7 @@ seedData().then(() => {
     console.log(`========================================`);
     console.log(`  OPD Backend Server`);
     console.log(`  Port: ${PORT}`);
-    console.log(`  Frontend: ${FRONTEND_URL}`);
+    console.log(`  Frontend: ${process.env.FRONTEND_URL}`);
     console.log(`  API: http://localhost:${PORT}/api`);
     console.log(`========================================`);
   });
