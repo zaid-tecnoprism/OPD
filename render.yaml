@@ -30,5 +30,11 @@ services:
     envVars:
       - key: VITE_API_BASE_URL
         value: https://out-patient-departmnet.onrender.com/api
+    # SPA fallback: serve index.html for all routes (fixes 404 on
+    # refresh / direct open of /patients/new, /dashboard, etc.)
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     plan: free
     autoDeploy: yes
