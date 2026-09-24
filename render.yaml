@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: opd-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install --no-audit --no-fund
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      - key: HOSPITAL_NAME
+        value: "City General Hospital"
+      - key: FRONTEND_URL
+        sync: false
+        description: "Comma-separated list of your frontend URLs, e.g. https://opd-demo.netlify.app,https://opd-demo.vercel.app"
+    plan: free
+    autoDeploy: yes

@@ -1,0 +1,20 @@
+{
+  "name": "opd-backend",
+  "version": "1.0.0",
+  "description": "AI-Assisted Hospital OPD Management Backend",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node data/seed.js",
+    "evals": "node evals/runEvals.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pdfkit": "^0.15.0",
+    "uuid": "^9.0.1"
+  }
+}
