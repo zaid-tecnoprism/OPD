@@ -29,11 +29,11 @@ import auditMiddleware from './middleware/audit.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const FRONTEND_URL_RAW = process.env.FRONTEND_URL || 'http://localhost:5173';
+const FRONTEND_URL_RAW = process.env.FRONTEND_URL || 'https://opd-lsx7.onrender.com';
 
 const allowedOrigins = Array.from(new Set([
   ...FRONTEND_URL_RAW.split(',').map(s => s.trim()).filter(Boolean),
-  'http://localhost:5173',
+  'https://opd-lsx7.onrender.com',
   'http://127.0.0.1:5173',
   'https://localhost:5173'
 ]));
