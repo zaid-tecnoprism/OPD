@@ -91,6 +91,21 @@ app.use('/api/agents', agentRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/audit', auditRoutes);
 
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    data: {
+      service: 'OPD Backend API',
+      note: 'Demo / Prototype — Not for Clinical Use',
+      health: '/api/health',
+      patients: '/api/patients',
+      doctors: '/api/doctors',
+      departments: '/api/departments'
+    },
+    message: 'OPD Backend is running. Use /api/* endpoints (e.g. /api/health).'
+  });
+});
+
 app.use((req, res) => {
   res.status(404).json({
     success: false,
